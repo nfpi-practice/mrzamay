@@ -21,8 +21,14 @@
             <input type="text" title="enter text"> text<br>
             <input type="email" title="enter email"> email<br>
             <input type="password" title="enter password"> password<br>
-            <input type="checkbox"> checkbox1<br>
-            <input type="radio"> radio 1<br>
+            <label><input type="checkbox" name="check"> checkbox1<br></label>
+            <label><input type="checkbox" name="check"> checkbox2<br></label>
+            <label><input type="checkbox" name="check"> checkbox3<br></label>
+            <label><input type="checkbox" name="check"> checkbox4<br></label>
+            <label><input type="radio" name="radio"> radio 1</label>
+            <label><input type="radio" name="radio"> radio 2</label>
+            <label><input type="radio" name="radio"> radio 3</label>
+            <label><input type="radio" name="radio"> radio 4</label><br>
             <!-- Добавляю меню с выпадающим список, где option - значения списка -->
             <select name="select">
                 <option value="value1">Value 1</option>
@@ -36,26 +42,30 @@
         <p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>
         <!-- Добавляю таблицу с 3 столбцами и 4 строками -->
         <table border="1">
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
         </table>
     </section>
 </main> 
