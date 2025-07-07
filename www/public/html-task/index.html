@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"> <!-- Объявляю кодировку UTF-8 -->
+    <title>HTML task</title> <!-- Указываю название страницы -->
+</head>
+<body>
+<header> <!-- Начинаю раздел header -->
+    <img src="images/logo.png" alt="Логотип" width="100" title="Логотип"> <!-- Добавляю лого с размером шириной 100(высота автоматически будет 100, тк у картинки ширина и высота равны) -->
+    <!-- Объявляю ссылки на секции 1 и 2 в main и ссылку на footer -->
+    <a href="#sec1">Section 1</a> 
+    <a href="#sec2">Section 2</a>
+    <a href="#sec3">Footer</a>
+</header> <!-- Заканчиваю раздел header -->
+<main> <!-- Начинаю раздел main -->
+    <section id="sec1"> <!-- Начинаю секцию 1 и указываю id, чтобы по ссылкам сверху я мог перейти к данной секции -->
+        <h2>Заголовок</h2> 
+        <p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>
+        <form> <!-- Начинаю раздел form -->
+            <!-- По заданию добавляю различные поля ввода -->
+            <input type="text" title="enter text"> text<br>
+            <input type="email" title="enter email"> email<br>
+            <input type="password" title="enter password"> password<br>
+            <label><input type="checkbox" name="check"> checkbox1<br></label>
+            <label><input type="checkbox" name="check"> checkbox2<br></label>
+            <label><input type="checkbox" name="check"> checkbox3<br></label>
+            <label><input type="checkbox" name="check"> checkbox4<br></label>
+            <label><input type="radio" name="radio"> radio 1</label>
+            <label><input type="radio" name="radio"> radio 2</label>
+            <label><input type="radio" name="radio"> radio 3</label>
+            <label><input type="radio" name="radio"> radio 4</label><br>
+            <!-- Добавляю меню с выпадающим список, где option - значения списка -->
+            <select name="select">
+                <option value="value1">Value 1</option>
+                <option value="value2">Value 2</option>
+                <option value="value3">Value 3</option>
+            </select> dropdown
+        </form>
+    </section>
+    <section id="sec2"> <!-- Начинаю секцию 2 и указываю id, чтобы по ссылкам сверху я мог перейти к данной секции -->
+        <h2>Заголовок</h2>
+        <p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>
+        <!-- Добавляю таблицу с 3 столбцами и 4 строками -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main> 
+<footer> <!-- Начинаю раздел footer -->
+    <section id="sec3"> <!-- Начинаю секцию, чтобы указать id, по ссылкам сверху я смогу перейти к данной секции -->
+        Contact information: <i>html for nfpi practice</i><br>
+        <a href="https://vk.com/oohjesuss" target="_blank">VK</a><br> <!-- Ссылка на ВК в новой вкладке -->
+        <a href="https://t.me/mrzamay" target="_blank">Telegram</a><br> <!-- Ссылка на ТГ в новой вкладке -->
+        <a href="mailto:timofeev.ivaan@gmail.com">Send me mail</a> <!-- Ссылка на написание мне письма через приложение для почты -->
+    </section>
+</footer> <!-- Заканчиваю раздел footer -->
+</body>
+</html>
