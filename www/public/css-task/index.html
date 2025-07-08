@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"> <!-- Объявляю кодировку UTF-8 -->
+    <title>HTML task</title> <!-- Указываю название страницы -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header> <!-- Начинаю раздел header -->
+    <img src="images/logo.png" alt="Логотип" title="Логотип"> <!-- Добавляю лого с размером шириной 100(высота автоматически будет 100, тк у картинки ширина и высота равны) -->
+    <!-- Объявляю ссылки на секции 1 и 2 в main и ссылку на footer -->
+    <div class="menu">
+        <div class="dropdown">
+            <a href="#">Sections ▼</a>
+            <div class="dropdown-items">
+                <a href="#sec1">Section 1</a>
+                <a href="#sec2">Section 2</a>
+            </div>
+        </div>
+       <a href="#sec3">Footer</a>
+    </div>
+</header> <!-- Заканчиваю раздел header -->
+<main> <!-- Начинаю раздел main -->
+    <section id="sec1"> <!-- Начинаю секцию 1 и указываю id, чтобы по ссылкам сверху я мог перейти к данной секции -->
+        <h1><i>Form</i></h1>
+        <p>We need information about you</p>
+        <form> <!-- Начинаю раздел form -->
+            <!-- По заданию добавляю различные поля ввода -->
+            <input type="email" title="Enter e-mail" placeholder="E-mail"><br>
+            <input type="password" title="Enter password (8 symb min)" minlength="8" required placeholder="Password (8 symb min)"><br>
+            <input type="text" title="Enter text" placeholder="Some text about you"><br>
+            <label><input type="checkbox"> Wanna get updates?</label><br>
+            <label><input type="radio" name="radio" class="manRadio" required> I'm a man</label><br>
+            <label><input type="radio" name="radio" class="womanRadio" required> I'm a woman</label><br>
+            <!-- Добавляю меню с выпадающим список, где option - значения списка -->
+            <i>Enter your fav animal:</i>
+            <select name="select" required>
+                <option value="" disabled selected></option>
+                <option value="value1">Dog</option>
+                <option value="value2">Cat</option>
+                <option value="value3">Other</option>
+            </select>
+            <br>
+            <button>Send form</button>
+        </form>
+    </section>
+    <section id="sec2"> <!-- Начинаю секцию 2 и указываю id, чтобы по ссылкам сверху я мог перейти к данной секции -->
+        <h1><i>Table</i></h1>
+        <p>Very important table</p>
+        <!-- Добавляю таблицу с 3 столбцами и 4 строками -->
+        <table>
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>id</th>
+                <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ali</td>
+                    <td>10</td>
+                    <td>Male</td>
+                </tr>
+                <tr>
+                    <td>Boris</td>
+                    <td>5</td>
+                    <td>Male</td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>20</td>
+                    <td>Female</td>
+                </tr>
+                <tr>
+                    <td>Ivan</td>
+                    <td>15</td>
+                    <td>Male</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main> 
+<footer> <!-- Начинаю раздел footer -->
+    <div id="sec3"></div> <!-- Начинаю секцию, чтобы указать id, по ссылкам сверху я смогу перейти к данной секции -->
+    <i>css for nfpi practice</i><br>
+    <div class="links">
+        <a href="https://vk.com/oohjesuss" target="_blank">VK</a> <!-- Ссылка на ВК в новой вкладке -->
+        <a href="https://t.me/mrzamay" target="_blank">Telegram</a> <!-- Ссылка на ТГ в новой вкладке -->
+        <a href="mailto:timofeev.ivaan@gmail.com">Send me mail</a> <!-- Ссылка на написание мне письма через приложение для почты -->
+    </div>
+</footer> <!-- Заканчиваю раздел footer -->
+</body>
+</html>

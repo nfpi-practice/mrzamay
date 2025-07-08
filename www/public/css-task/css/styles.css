@@ -1,0 +1,358 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --font-size-base: 14px;
+    --font-size-h1: 30px;
+    --font-size-ital: 16px;
+    
+    --backgroundcolor-shadow: #d3d3d3;
+    --main-color: orange;
+    
+    --default-gap: 20px;
+
+    --transition-def-time: .5s;
+}
+
+
+
+body {
+    display: grid;
+    gap: var(--default-gap);
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr 100px;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+
+header {
+    grid-area: header;
+    background-color: #FF6831;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 6px 4px var(--backgroundcolor-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    padding: 15px 0;
+    height: auto;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-items {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  background-color: rgb(255, 204, 110);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px var(--backgroundcolor-shadow);
+}
+
+.dropdown:hover .dropdown-items {
+  display: flex;
+}
+
+.dropdown-items a {
+  padding: 10px;
+  color: gray;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: blue;
+  transition: var(--transition-def-time);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--default-gap);
+    margin: 20px 0;
+    width: 100%;
+}
+
+.menu > a, .dropdown > a {
+    font-size: 20px;
+    text-decoration: none;
+    color: 	#2B2B2B;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.menu > a:hover {
+    text-shadow: 0 0 10px var(--backgroundcolor-shadow);
+    transition: var(--transition-def-time);
+}
+
+.menu > a:active {
+    text-shadow: 0 0 8px rgb(0, 0, 0);
+    transition: .2s;
+}
+
+img {
+    margin: 15px 0;
+    width: 60px;
+}
+
+@media screen and (min-width: 576px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .menu {
+        justify-content: space-between;
+        align-items: flex-end;
+        margin: 50px;
+        width: auto;
+    }
+
+    img {
+        margin-left: 2%;
+        margin-right: auto;
+    }
+}
+
+
+main {
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+
+}
+
+input, select, button {
+    border-radius: 10px;
+    font-size: var(--font-size-base);
+    width: 100%;
+    height: 4vh;
+    margin-right: 15px;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+form > label {
+    display: flex;
+    align-items: center;
+    align-content: space-evenly;
+}
+
+input:hover {
+    background-color: #e6e6e6;
+    transition: var(--transition-def-time);
+}
+
+select:hover {
+    background-color: #e6e6e6;
+    transition: var(--transition-def-time);
+}
+
+button:hover {
+    background-color: #e6e6e6;
+    transition: var(--transition-def-time);
+}
+
+button:active {
+    background-color: gray;
+    box-shadow: 0 0 20px gray;
+}
+
+input[type="email"], input[type="password"]:invalid {
+    color: red;
+    transition: var(--transition-def-time);
+}
+
+input[type="password"], input[type="email"]:valid {
+    color: rgb(0, 107, 0);
+    transition: var(--transition-def-time);
+}
+
+::placeholder {
+    font-size: var(--font-size-base);
+    text-align: center;
+    color: gray;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--main-color);
+}
+
+.manRadio:checked {
+    accent-color: blue;
+}
+
+.womanRadio:checked {
+    accent-color: rgb(236, 52, 82);
+}
+
+table {
+    width: 100%;
+    border: 5px solid var(--main-color);
+    border-radius: 10px 10px;
+}
+
+th {
+  position: sticky;
+  background-color: #774a35;
+  color: white;
+  padding: 5px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ff9e78;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffdfc4;
+}
+
+tbody td:nth-child(1),
+tbody td:nth-child(3) {
+  text-align: left;
+  padding: 4px;
+}
+
+tbody td:nth-child(2) {
+  text-align: right;
+  padding: 4px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 -6px 4px var(--backgroundcolor-shadow);
+}
+
+footer > i {
+    margin-left: 50px;
+    margin-right: auto;
+    font-size: var(--font-size-ital);
+}
+
+footer > i::before {
+    content: "\''";
+    color: var(--main-color);
+    margin-right: 4px;
+}
+
+footer > i::after {
+    content: "\''";
+    color: var(--main-color);
+    margin-right: 4px;
+}
+
+.links {
+    display: flex;
+    justify-content: right;
+    gap:var(--default-gap); 
+    margin: 50px;
+}
+
+.links > a {
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    color: rgb(73, 73, 73);
+    font-weight:lighter;
+}
+
+.links > a:hover {
+    text-shadow: 0 0 10px var(--main-color);
+    transition: var(--transition-def-time);
+}
+
+.links > a:active {
+    text-shadow: 0 0 8px red;
+    transition: .2s;
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        --font-size-ital: 18px;
+        --font-size-base: 15px;
+    }
+
+    img {
+        width: 90px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    main {
+        margin-left: 20px;
+        margin-right: 20px;
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1px;
+        gap: 20px;
+    }
+
+    input, select, button {
+        width: 100%;
+        max-width: 400px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (min-width: 993px) {
+    img {
+        width: 100px;
+    }
+
+    :root {
+        --font-size-ital: 22px;
+        --font-size-base: 20px;
+    }
+}
+
+/*Кастомный скроллбар*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--backgroundcolor-shadow);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: darkorange;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+}
