@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createCounter () {
+            let localCounter = 0;
+
+            let otherFunc = () => {
+                localCounter++;
+                alert(localCounter);
+            };
+
+            let callCount = prompt("Введите, сколько раз вызвать другую функцию?:");
+
+            for (let i = 0; i < callCount; i++) {
+                otherFunc();
+            }
+
+            alert(`${localCounter} - число вызовов функции`);
+        }
+
+        createCounter();
+    </script>
+</body>
+</html>
