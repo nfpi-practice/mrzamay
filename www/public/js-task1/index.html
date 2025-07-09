@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla JS task</title>
+</head>
+<body>
+<script>
+    let numb = prompt('Введите число');
+    alert(
+        isNaN(Number(numb)) || numb === "" ? "Не число" :
+        numb % 2 === 0 ? "Чётное" : "Не чётное"
+    );
+</script>
+</body>
+</html>
