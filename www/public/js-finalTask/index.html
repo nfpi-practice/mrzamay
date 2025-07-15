@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<div id="status">Start generate random number</div>
+<div id="status">Помогу вам сгенерировать случайное число</div>
 <div id="result"></div>
 <button id="loadScript">GO!</button>
 <div id="animation">
@@ -36,6 +36,7 @@
     <div id="block2"></div>
     <div id="block3"></div>
 </div>
+<div id="addStatusColumn"></div>
 
 <script>
 
@@ -43,6 +44,7 @@
     let statusBlock = document.getElementById('status');
     let animationBlock = document.getElementById('animation');
     let circlesBlock = Array.from(animationBlock.children);
+    let statusColumn = document.getElementById('addStatusColumn');
     let task = {
         status: "Not Started",
         result: null
@@ -58,7 +60,7 @@
     function startTask () {
         let timeToFinishTask = Math.random() * 40000 + 20000;
 
-        console.log(`time to finish task: ${timeToFinishTask/1000} sec`);
+        console.log(`Время, за которое выполнится запрос: ${timeToFinishTask/1000} sec`);
         task.status = "Started";
         task.result = null;
         return new Promise(resolve => {
@@ -76,13 +78,15 @@
         try {
             loadScript.disabled = true;
             let n = 0;
+            statusColumn.innerHTML = "";
+            statusBlock.innerHTML = "";
             animateCirclesInit();
-            resultBlock.innerHTML = "";
+            resultBlock.innerHTML = "Время ожидания выполнения вашего запроса займёт от 20 до 60 секунд";
 
             const stTask = startTask();
 
             const interval = setInterval(() => {
-                statusBlock.innerHTML = `Current status: ${task.status}`
+                statusColumn.innerHTML += "<br>Ваш запрос пока выполняется";
                 console.log(`${task.status}`);
 
                 circlesBlock[n].style.backgroundColor = circlesBlock[n].style.backgroundColor === "blue" ? "lightblue" : "blue";
@@ -93,8 +97,9 @@
                     loadScript.disabled = false;
                     animationBlock.style.visibility = 'hidden';
 
-                    resultBlock.innerHTML = `Result: ${task.result}`;
-                    statusBlock.innerHTML = `Task over. Status: ${task.status}`
+                    resultBlock.innerHTML = `Результат: ${task.result}`;
+                    statusBlock.innerHTML = `Запрос выполнен. Статус запроса: ${task.status}`;
+                    statusColumn.innerHTML = 'Запрос выполнен, результат выше';
 
                     clearInterval(interval);
                 }
