@@ -15,6 +15,7 @@
             height: 25px;
             border-radius: 50px;
             background-color: blue;
+            transition: .5s;
         }
 
         #animation {
@@ -49,16 +50,17 @@
         status: "Not Started",
         result: null
     };
+    let timeToFinishTask = undefined;
 
     function animateCirclesInit () {
         animationBlock.style.visibility = 'visible';
         circlesBlock.forEach((elem) => {
-            elem.backgroundColor = 'blue';
+            elem.style.backgroundColor = 'blue';
         })
     }
 
     function startTask () {
-        let timeToFinishTask = Math.random() * 40000 + 20000;
+        timeToFinishTask = Math.random() * 40000 + 20000;
 
         console.log(`Время, за которое выполнится запрос: ${timeToFinishTask/1000} sec`);
         task.status = "Started";
@@ -81,9 +83,10 @@
             statusColumn.innerHTML = "";
             statusBlock.innerHTML = "";
             animateCirclesInit();
-            resultBlock.innerHTML = "Время ожидания выполнения вашего запроса займёт от 20 до 60 секунд";
 
             const stTask = startTask();
+
+            resultBlock.innerHTML = `Время ожидания выполнения вашего запроса займёт от 20 до 60 секунд(${Math.round(timeToFinishTask/1000)} секунд)`;
 
             const interval = setInterval(() => {
                 statusColumn.innerHTML += "<br>Ваш запрос пока выполняется";
