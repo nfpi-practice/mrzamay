@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>generate random number</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #animation > div {
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background-color: blue;
+        }
+
+        #animation {
+            display: flex;
+            flex-wrap: nowrap;
+            gap:5px;
+            visibility: hidden;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="status">Start generate random number</div>
+<div id="result"></div>
+<button id="loadScript">GO!</button>
+<div id="animation">
+    <div id="block1"></div>
+    <div id="block2"></div>
+    <div id="block3"></div>
+</div>
+
+<script>
+
+    let resultBlock = document.getElementById('result');
+    let statusBlock = document.getElementById('status');
+    let animationBlock = document.getElementById('animation');
+    let circlesBlock = Array.from(animationBlock.children);
+    let task = {
+        status: "Not Started",
+        result: null
+    };
+    let allBlock;
+
+    function animateCirclesInit () {
+        animationBlock.style.visibility = 'visible';
+        circlesBlock.forEach((elem) => {
+            elem.backgroundColor = 'blue';
+        })
+    }
+
+
+
+    function stopAnimation () {
+        circlesBlock.forEach((elem) => {
+            elem.style.backgroundColor = "blue";
+        })
+        clearInterval(allBlock);
+    }
+
+    function startTask () {
+        let timeToFinishTask = Math.random() * 40000 + 20000;
+
+        console.log(`time to finish task: ${timeToFinishTask/1000} sec`);
+        task.status = "Started";
+        task.result = null;
+        return new Promise(resolve => {
+            setTimeout(() => {
+                task.status = "Completed";
+                // stopAnimation();
+                task.result = Math.floor(Math.random() * 1000);
+            }, timeToFinishTask);});
+    }
+
+    function isTaskFinished () {
+        return task.status === "Completed" ? true : false;
+    }
+
+    async function sendRequest () {
+        try {
+            loadScript.disabled = true;
+            let n = 0;
+            animateCirclesInit();
+            resultBlock.innerHTML = "";
+
+            const stTask = startTask();
+
+            const interval = setInterval(() => {
+                statusBlock.innerHTML = `Current status: ${task.status}`
+                console.log(`${task.status}`);
+
+                circlesBlock[n].style.backgroundColor = circlesBlock[n].style.backgroundColor === "blue" ? "lightblue" : "blue";
+                n++;
+                n > 2 ? n = 0 : null ;
+
+                if (isTaskFinished()) {
+                    loadScript.disabled = false;
+                    animationBlock.style.visibility = 'hidden';
+
+                    resultBlock.innerHTML = `Result: ${task.result}`;
+                    statusBlock.innerHTML = `Task over. Status: ${task.status}`
+
+                    clearInterval(interval);
+                }
+            },2000);
+
+            await stTask;
+        } catch (err) {
+        }
+    }
+
+    loadScript.addEventListener("click", sendRequest);
+
+</script>
+</body>
+</html>
