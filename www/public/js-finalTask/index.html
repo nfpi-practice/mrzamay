@@ -47,23 +47,6 @@
         status: "Not Started",
         result: null
     };
-    let allBlock;
-
-    function animateCirclesInit () {
-        animationBlock.style.visibility = 'visible';
-        circlesBlock.forEach((elem) => {
-            elem.backgroundColor = 'blue';
-        })
-    }
-
-
-
-    function stopAnimation () {
-        circlesBlock.forEach((elem) => {
-            elem.style.backgroundColor = "blue";
-        })
-        clearInterval(allBlock);
-    }
 
     function startTask () {
         let timeToFinishTask = Math.random() * 40000 + 20000;
@@ -74,7 +57,6 @@
         return new Promise(resolve => {
             setTimeout(() => {
                 task.status = "Completed";
-                // stopAnimation();
                 task.result = Math.floor(Math.random() * 1000);
             }, timeToFinishTask);});
     }
