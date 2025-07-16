@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>generate random number</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #animation > div {
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background-color: blue;
+            transition: .5s;
+        }
+
+        #animation {
+            display: flex;
+            flex-wrap: nowrap;
+            gap:5px;
+            visibility: hidden;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="status">Помогу вам сгенерировать случайное число</div>
+<div id="result"></div>
+<button id="loadScript">GO!</button>
+<div id="animation">
+    <div id="block1"></div>
+    <div id="block2"></div>
+    <div id="block3"></div>
+</div>
+<div id="addStatusColumn"></div>
+
+<script>
+
+    let resultBlock = document.getElementById('result');
+    let statusBlock = document.getElementById('status');
+    let animationBlock = document.getElementById('animation');
+    let circlesBlock = Array.from(animationBlock.children);
+    let statusColumn = document.getElementById('addStatusColumn');
+    let task = {
+        status: "Not Started",
+        result: null
+    };
+    let timeToFinishTask = undefined;
+
+    function animateCirclesInit () {
+        animationBlock.style.visibility = 'visible';
+        circlesBlock.forEach((elem) => {
+            elem.style.backgroundColor = 'blue';
+        })
+    }
+
+    function startTask () {
+        timeToFinishTask = Math.random() * 40000 + 20000;
+
+        console.log(`Время, за которое выполнится запрос: ${timeToFinishTask/1000} sec`);
+        task.status = "Started";
+        task.result = null;
+        return new Promise(resolve => {
+            setTimeout(() => {
+                task.status = "Completed";
+                task.result = Math.floor(Math.random() * 1000);
+            }, timeToFinishTask);});
+    }
+
+    function isTaskFinished () {
+        return task.status === "Completed" ? true : false;
+    }
+
+    async function sendRequest () {
+        try {
+            loadScript.disabled = true;
+            let n = 0;
+            statusColumn.innerHTML = "";
+            statusBlock.innerHTML = "";
+            animateCirclesInit();
+
+            const stTask = startTask();
+
+            resultBlock.innerHTML = `Время ожидания выполнения вашего запроса займёт от 20 до 60 секунд(${Math.round(timeToFinishTask/1000)} секунд)`;
+
+            const interval = setInterval(() => {
+                statusColumn.innerHTML += "<br>Ваш запрос пока выполняется";
+                console.log(`${task.status}`);
+
+                circlesBlock[n].style.backgroundColor = circlesBlock[n].style.backgroundColor === "blue" ? "lightblue" : "blue";
+                n++;
+                n > 2 ? n = 0 : null ;
+
+                if (isTaskFinished()) {
+                    loadScript.disabled = false;
+                    animationBlock.style.visibility = 'hidden';
+
+                    resultBlock.innerHTML = `Результат: ${task.result}`;
+                    statusBlock.innerHTML = `Запрос выполнен. Статус запроса: ${task.status}`;
+                    statusColumn.innerHTML = 'Запрос выполнен, результат выше';
+
+                    clearInterval(interval);
+                }
+            },2000);
+
+            await stTask;
+        } catch (err) {
+        }
+    }
+
+    loadScript.addEventListener("click", sendRequest);
+
+</script>
+</body>
+</html>
