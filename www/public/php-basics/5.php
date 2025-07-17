@@ -31,10 +31,10 @@ class User {
 $user = new User;
 
 $user->setAge(30); // установим возраст в 30
-echo $user->age; // выведет 30
+print_r("{$user->age}\n"); // выведет 30
 
 $user->addAge(10);
-echo $user->age; // не выведет 10, а выведет 30
+print_r("{$user->age}\n");  // не выведет 10, а выведет 30
 
 $user->subAge(5);
-echo $user->age;
+print_r("{$user->age}\n");
