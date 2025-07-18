@@ -45,7 +45,7 @@ class User
     {
         $this->name = $name;
         $this->surname = $surname;
-        $this->birthDate = $birthDate;
+        $this->birthDate = date("Y-m-d", strtotime($birthDate));
         $this->age = $this->calculateAge();
     }
     public function getName()
@@ -82,7 +82,7 @@ class User
     }
 }
 
-$user1 = new User("John", "Doe", "2004-7-18");
+$user1 = new User("John", "Doe", "18.7.2004");
 print_r($user1->getAge() ."\n");
 
 class Employee extends User
