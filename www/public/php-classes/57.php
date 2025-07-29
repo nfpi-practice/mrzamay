@@ -1,8 +1,11 @@
 <?php
 require_once '56/Date.php';
-class Interval {
+
+class Interval
+{
     private $date1;
     private $date2;
+
     public function __construct(Date $date1, Date $date2)
     {
         $this->date1 = $date1;
@@ -26,8 +29,8 @@ class Interval {
 
     private function timestampDiff()
     {
-        $date1 = mktime(0,0,0, $this->date1->getMonth(),$this->date1->getDay(), $this->date1->getYear());
-        $date2 = mktime(0,0,0,$this->date2->getMonth(),$this->date2->getDay(), $this->date2->getYear());
+        $date1 = mktime(0, 0, 0, $this->date1->getMonth(), $this->date1->getDay(), $this->date1->getYear());
+        $date2 = mktime(0, 0, 0, $this->date2->getMonth(), $this->date2->getDay(), $this->date2->getYear());
         return abs($date2 - $date1);
     }
 }

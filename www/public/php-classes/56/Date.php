@@ -1,9 +1,12 @@
 <?php
-class Date {
+
+class Date
+{
     private $day;
     private $month;
     private $year;
     private $timestamp;
+
     public function __construct($date = null)
     {
         if ($date == null) {
@@ -11,9 +14,7 @@ class Date {
             $this->month = date('n');
             $this->year = date('Y');
             $this->timestamp = mktime(0, 0, 0, $this->month, $this->day, $this->year);
-        }
-        else
-        {
+        } else {
             $this->day = date('d', strtotime($date));
             $this->month = date('n', strtotime($date));
             $this->year = date('Y', strtotime($date));
@@ -29,15 +30,11 @@ class Date {
     public function getMonth($lang = null)
     {
         $ruMonths = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-        if ($lang === null)
-        {
+        if ($lang === null) {
             return $this->month;
-        }
-        elseif ($lang === 'en') {
+        } elseif ($lang === 'en') {
             return date('F', $this->timestamp);
-        }
-        elseif ($lang === 'ru')
-        {
+        } elseif ($lang === 'ru') {
             return $ruMonths[$this->month - 1];
         }
     }
@@ -51,16 +48,11 @@ class Date {
     {
         $ruWeekDays = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение'];
         // возвращает день недели
-        if ($lang === null)
-        {
+        if ($lang === null) {
             return date('N', $this->timestamp);
-        }
-        elseif ($lang === 'en')
-        {
+        } elseif ($lang === 'en') {
             return date('l', $this->timestamp);
-        }
-        elseif ($lang === 'ru')
-        {
+        } elseif ($lang === 'ru') {
             return $ruWeekDays[date('N', $this->timestamp) - 1];
         }
     }
@@ -68,8 +60,7 @@ class Date {
     public function addDay($value)
     {
         $this->day += $value;
-        while ($this->day > date('t', mktime(0, 0, 0, $this->month, 1, $this->year)))
-        {
+        while ($this->day > date('t', mktime(0, 0, 0, $this->month, 1, $this->year))) {
             $this->day -= date('t', mktime(0, 0, 0, $this->month, 1, $this->year));
             $this->month++;
             if ($this->month > 12) {
@@ -84,12 +75,10 @@ class Date {
     public function subDay($value)
     {
         $this->day -= $value;
-        while ($this->day < 1)
-        {
+        while ($this->day < 1) {
             $this->month--;
 
-            if ($this->month < 1)
-            {
+            if ($this->month < 1) {
                 $this->month = 12;
                 $this->year--;
             }
@@ -113,8 +102,7 @@ class Date {
     public function subMonth($value)
     {
         $this->month -= $value;
-        while ($this->month < 1)
-        {
+        while ($this->month < 1) {
             $this->month += 12;
             $this->year--;
         }
