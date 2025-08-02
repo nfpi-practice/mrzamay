@@ -105,7 +105,7 @@ $file2->rename("text1.txt");
 print_r("<br>Dir Files after rename: " . $file2->printDirFiles());
 mkdir("files/newFolder");
 print_r($file2->replace("newFolder/text1.txt") .
-    "<br>New folder Files: " .$file2->printDirFiles("files/newFolder"));
+    "<br>New folder Files: " . $file2->printDirFiles("files/newFolder"));
 
 $file2->delete();
 rmdir("files/newFolder");
