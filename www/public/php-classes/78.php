@@ -4,6 +4,7 @@ require_once "classes.php";
 class Select extends Tag
 {
     public $elements = [];
+
     public function __construct()
     {
         parent::__construct("select");
@@ -53,6 +54,7 @@ class Option extends Tag
         return $this;
     }
 }
+
 $form = (new Form)->setAttrs([
     'action' => '',
     'method' => 'GET'
@@ -60,14 +62,14 @@ $form = (new Form)->setAttrs([
 
 echo $form->open();
 echo (new Select)->setAttr('name', 'list')
-    ->add( (new Option())->setText('item1') )
-    ->add( (new Option())->setText('item2') )
-    ->add( (new Option())->setText('item3') )
+    ->add((new Option())->setText('item1'))
+    ->add((new Option())->setText('item2'))
+    ->add((new Option())->setText('item3'))
     ->show();
 echo (new Select)->setAttr('name', 'list2')
-    ->add( (new Option())->setText('item1') )
-    ->add( (new Option())->setText('item2') )
-    ->add( (new Option())->setText('item3') )
+    ->add((new Option())->setText('item1'))
+    ->add((new Option())->setText('item2'))
+    ->add((new Option())->setText('item3'))
     ->show();
 echo new Submit;
 echo $form->close();
