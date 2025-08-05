@@ -1,23 +1,30 @@
 <?php
-trait Trait1 {
+
+trait Trait1
+{
     public function method1()
     {
         return 1;
     }
+
     public function method2()
     {
         return 2;
     }
 }
-trait Trait2 {
+
+trait Trait2
+{
     use Trait1;
+
     public function method3()
     {
         return 3;
     }
 }
 
-class Test {
+class Test
+{
     use Trait2;
 }
 

@@ -1,23 +1,31 @@
 <?php
-trait Trait1 {
+
+trait Trait1
+{
     private function method()
     {
         return 1;
     }
 }
-trait Trait2 {
+
+trait Trait2
+{
     private function method()
     {
         return 2;
     }
 }
-trait Trait3 {
+
+trait Trait3
+{
     private function method()
     {
         return 3;
     }
 }
-class Test {
+
+class Test
+{
     use Trait1, Trait2, Trait3 {
         Trait1::method insteadof Trait2, Trait3;
         Trait1::method as method1;

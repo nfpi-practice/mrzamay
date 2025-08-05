@@ -1,5 +1,7 @@
 <?php
-trait TestTrait {
+
+trait TestTrait
+{
     public function method1()
     {
         return 1;
@@ -8,7 +10,8 @@ trait TestTrait {
     abstract public function method2();
 }
 
-class Test {
+class Test
+{
     use TestTrait;
 
     public function method2()
@@ -18,4 +21,4 @@ class Test {
 }
 
 // Ошибка есть, если нет method2
-print_r("Methods sum: " . (new Test())->method1()+ (new Test())->method2());
+print_r("Methods sum: " . (new Test())->method1() + (new Test())->method2());
