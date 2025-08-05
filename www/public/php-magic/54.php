@@ -1,5 +1,7 @@
 <?php
-class User {
+
+class User
+{
     private $name;
     private $age;
 
@@ -15,26 +17,29 @@ class User {
     }
 }
 
-$user = new User("John" , 42);
+$user = new User("John", 42);
 print_r($user->name . " " . $user->age . "<br>");
 
-class Date {
+class Date
+{
     public $year;
     public $month;
     public $day;
+
     public function __construct($year, $month, $day)
     {
         $this->year = $year;
         $this->month = $month;
         $this->day = $day;
     }
+
     public function __get($value)
     {
-        if ($value == "weekDay")
-        {
+        if ($value == "weekDay") {
             return date("l", strtotime($this->day . "-" . $this->month . "-" . $this->year));
         }
     }
 }
+
 $date = new Date(29, 07, 2025);
 print_r($date->weekDay);
