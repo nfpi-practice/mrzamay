@@ -4,6 +4,7 @@ namespace Project\Controllers;
 
 use \Core\Controller;
 use \Project\Models\Page;
+use \Project\Models\Pages;
 
 class PageController extends Controller
 {
@@ -31,6 +32,28 @@ class PageController extends Controller
     {
         $this->title = $this->pages[$params['n']]['title'];
         return $this->render('page/show', ['text' => $this->pages[$params['n']]['text']]);
+    }
+
+    public function one($params)
+    {
+        $page = (new Pages) -> getById($params['id']);
+
+        $this->title = $page['title'];
+        return $this->render('page/one', [
+            'text' => $page['text'],
+            'h1' => $this->title
+        ]);
+    }
+
+    public function all()
+    {
+        $this->title = 'Список всех страниц';
+
+        $pages = (new Pages) -> getAll();
+        return $this->render('page/all', [
+            'pages' => $pages,
+            'h1' => $this->title
+        ]);
     }
 
     public function test()
