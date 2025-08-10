@@ -46,6 +46,7 @@ class ProductController extends Controller
 
     public function show($arguments)
     {
+        $this->title = 'Действие show контроллера product';
         $arg = $arguments["n"];
         $value = $this->products[$arg];
         var_dump($value);
@@ -56,6 +57,7 @@ class ProductController extends Controller
 
     public function all()
     {
+        $this->title = 'Действие all контроллера product';
         return $this->render('product/all', ['products' => $this->products]);
     }
 }
