@@ -23,6 +23,9 @@ RUN mkdir -p /var/www/html && \
     chown -R ${APP_USER_NAME}:${APP_USER_NAME} /var/www/html && \
     chmod -R 775 /var/www/html
 
+RUN docker-php-ext-install mysqli && \
+    docker-php-ext-enable mysqli
+
 # Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
