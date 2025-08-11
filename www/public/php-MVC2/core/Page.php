@@ -9,7 +9,7 @@ class Page
     private $view;
     private $data;
 
-    public function __construct($layout, $title, $view, $data)
+    public function __construct($layout, $title = '', $view = null, $data = [])
     {
         $this->layout = $layout;
         $this->title = $title;
