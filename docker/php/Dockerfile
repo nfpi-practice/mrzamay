@@ -24,7 +24,6 @@ RUN mkdir -p /var/www/html && \
     chmod -R 775 /var/www/html
 
 
-# Устанавливаем mysqli
 RUN docker-php-ext-install mysqli && \
     docker-php-ext-enable mysqli
 
